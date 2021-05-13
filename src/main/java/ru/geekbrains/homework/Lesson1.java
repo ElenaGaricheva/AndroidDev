@@ -38,7 +38,7 @@ public class Lesson1 {
 
     //Task 7
     public static void helloName(String name) {
-        System.out.println("Привет, " + name + "!");
+        System.out.format("Привет, %s!" , name);
     }
 
     //Task 8
