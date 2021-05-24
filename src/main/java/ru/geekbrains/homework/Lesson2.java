@@ -107,7 +107,7 @@ public class Lesson2 {
     public static void moveArrItems(int[] numArr, int steps) {
         int arrLength = numArr.length;
         int numSteps = steps % arrLength;
-        int startPos = numSteps > 0 ? 0 : -arrLength + 1;
+        int startPos = numSteps > 0 ? 0 : -arrLength+1;
         int cycleLimit = numSteps > 0 ? arrLength : 1;
         int buffItem = numArr[Math.abs(startPos)];
 
