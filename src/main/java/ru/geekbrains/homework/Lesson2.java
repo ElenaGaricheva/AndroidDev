@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 public class Lesson2 {
     public static void main(String[] args) {
-/*        System.out.println(Arrays.toString(oneToZero()));
+        System.out.println(Arrays.toString(oneToZero()));
         System.out.println(Arrays.toString(fillArray()));
         System.out.println(Arrays.toString(multiplyArrayElements()));
         rewriteDiagonal();
         minMaxElement();
-        System.out.println(checkBalance(new int[]{2, 2, 2, 1, 2, 2, 10, 1}));*/
+        System.out.println(checkBalance(new int[]{2, 2, 2, 1, 2, 2, 10, 1}));
         moveArrItems(new int[]{1, 2, 3, 4}, -1);
     }
 

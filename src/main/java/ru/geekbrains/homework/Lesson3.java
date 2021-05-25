@@ -7,7 +7,7 @@ public class Lesson3 {
     static Random random = new Random();
 
     public static void main(String[] args) {
-        // guessNumberGame();
+        guessNumberGame();
         guessWordGame();
     }
 
