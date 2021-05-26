@@ -10,7 +10,7 @@ public class Lesson2 {
         rewriteDiagonal();
         minMaxElement();
         System.out.println(checkBalance(new int[]{2, 2, 2, 1, 2, 2, 10, 1}));
-        moveArrItems(new int[]{1, 2, 3, 4}, -3);
+        moveArrItems(new int[]{1, 2, 3, 4}, -1);
     }
 
     //Task 1
@@ -107,19 +107,23 @@ public class Lesson2 {
     public static void moveArrItems(int[] numArr, int steps) {
         int arrLength = numArr.length;
         int numSteps = steps % arrLength;
-        int[] addArr = new int[arrLength];
+        int startPos = numSteps > 0 ? 0 : -arrLength+1;
+        int cycleLimit = numSteps > 0 ? arrLength : 1;
+        int buffItem = numArr[Math.abs(startPos)];
 
-        if (numSteps != 0) {
-            for (int i = 0; i < arrLength; i++) {
-                int newPosition = numSteps > 0 ?
-                        i + numSteps : i + arrLength - Math.abs(numSteps);
-                if (newPosition < arrLength) {
-                    addArr[newPosition] = numArr[i];
+        for (int i = 0; i < Math.abs(numSteps); i++) {
+            for (int j = startPos; j < cycleLimit; j++) {
+                int newPos = numSteps < 0 ? Math.abs(j) - 1 : Math.abs(j) + 1;
+
+                if (newPos < arrLength && newPos >= 0) {
+                    int tempVar = numArr[newPos];
+                    numArr[newPos] = buffItem;
+                    buffItem = tempVar;
                 } else {
-                    addArr[newPosition - arrLength] = numArr[i];
+                        numArr[Math.abs(startPos)] = buffItem;
                 }
             }
-            System.out.println(Arrays.toString(addArr));
-        } else System.out.println(Arrays.toString(numArr));
+        }
+        System.out.println(Arrays.toString(numArr));
     }
 }
