@@ -21,12 +21,17 @@ public class Lesson4 {
             if (checkVictory(userIcon, victorySize)) {
                 System.out.println("Вы выиграли!");
                 System.exit(0);
+            } else if (!isFullMap()) {
+                aiStep();
             }
-            aiStep();
             if (checkVictory(aiIcon, victorySize)) {
                 System.out.println("Выиграл компьютер!");
                 System.exit(0);
             }
+        }
+        if (isFullMap() && checkVictory(userIcon, victorySize) == checkVictory(aiIcon, victorySize)) {
+            System.out.println("Ничья!");
+            System.exit(0);
         }
     }
 
@@ -88,7 +93,7 @@ public class Lesson4 {
             map[aiStepY][aiStepX] = aiIcon;
             System.out.println("Ход компьютера с координатами X = " + (aiStepX + 1) + ", Y = " + (aiStepY + 1));
             printMap();
-        }
+        } else aiStep();
     }
 
     public static boolean checkCell(int x, int y) {
@@ -151,6 +156,7 @@ public class Lesson4 {
                     for (int j = 0; j < size; j++) {
                         counter = buffMap[i + j][j] == playerIcon ? counter + 1 : 0;
                     }
+
                     if (counter < victorySize) {
                         counter = 0;
                         for (int j = 0; j < size; j++) {
