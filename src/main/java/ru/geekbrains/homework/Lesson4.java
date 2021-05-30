@@ -8,11 +8,11 @@ public class Lesson4 {
     public static char[][] map;
     public static int mapSize;
     public static int victorySize;
-    public static char userIcon = 'X';
-    public static char aiIcon = 'O';
-    public static char emptyIcon = '.';
-    public static Scanner scan = new Scanner(System.in);
-    public static Random rand = new Random();
+    static final char userIcon = 'X';
+    static final char aiIcon = 'O';
+    static final char emptyIcon = '.';
+    static final Scanner scan = new Scanner(System.in);
+    static final Random rand = new Random();
 
     public static void main(String[] args) {
         initGame();
@@ -44,7 +44,7 @@ public class Lesson4 {
         printMap();
     }
 
-    public static void initMap(int mapSize) {
+    private static void initMap(int mapSize) {
         map = new char[mapSize][mapSize];
 
         for (int i = 0; i < mapSize; i++) {
@@ -54,7 +54,7 @@ public class Lesson4 {
         }
     }
 
-    public static void printMap() {
+    private static void printMap() {
         for (int i = 0; i <= mapSize; i++) {
             System.out.print(i + " ");
         }
@@ -69,7 +69,7 @@ public class Lesson4 {
         System.out.println();
     }
 
-    public static void userStep() {
+    private static void userStep() {
         System.out.println("Укажите координаты своего хода");
         System.out.print("Введите координату X: ");
         int userStepX = scan.nextInt() - 1;
@@ -86,7 +86,7 @@ public class Lesson4 {
 
     }
 
-    public static void aiStep() {
+    private static void aiStep() {
         int aiStepX = rand.nextInt(mapSize);
         int aiStepY = rand.nextInt(mapSize);
         if (checkCell(aiStepX, aiStepY) && !isFullMap()) {
@@ -96,13 +96,13 @@ public class Lesson4 {
         } else aiStep();
     }
 
-    public static boolean checkCell(int x, int y) {
+    private static boolean checkCell(int x, int y) {
         if ((x < mapSize) && (x >= 0) && (y >= 0) && (y < mapSize)) {
             return map[y][x] == emptyIcon;
         } else return false;
     }
 
-    public static boolean isFullMap() {
+    private static boolean isFullMap() {
         for (char[] s : map) {
             if (Arrays.toString(s).indexOf(emptyIcon) > -1) {
                 return false;
@@ -111,7 +111,7 @@ public class Lesson4 {
         return true;
     }
 
-    public static boolean checkVictory(char playerIcon, int victorySize) {
+    private static boolean checkVictory(char playerIcon, int victorySize) {
         int counter = 0;
 
         counter = checkMap(victorySize, playerIcon, map);
@@ -131,7 +131,7 @@ public class Lesson4 {
         return counter == victorySize;
     }
 
-    public static int checkMap(int victorySize, char playerIcon, char[][] buffMap) {
+    private static int checkMap(int victorySize, char playerIcon, char[][] buffMap) {
         int counter = 0;
 
         //Проверка строк
