@@ -16,14 +16,17 @@ public class Lesson4 {
 
     public static void main(String[] args) {
         initGame();
+
         while (!isFullMap()) {
             userStep();
+
             if (checkVictory(userIcon, victorySize)) {
                 System.out.println("Вы выиграли!");
                 System.exit(0);
             } else if (!isFullMap()) {
                 aiStep();
             }
+
             if (checkVictory(aiIcon, victorySize)) {
                 System.out.println("Выиграл компьютер!");
                 System.exit(0);
@@ -112,61 +115,76 @@ public class Lesson4 {
     }
 
     private static boolean checkVictory(char playerIcon, int victorySize) {
-        int counter = 0;
+        boolean counter;
 
         counter = checkMap(victorySize, playerIcon, map);
 
         //Если при первой проверке строк и диагонали ничего не найдено, переворачиваю массив,
-        // чтобы с той же логикой пройти по столбцам и диагонали в другом направлении.
-        if (counter < victorySize) {
-            char[][] buffMap = new char[mapSize][mapSize];
-            for (int i = 0; i < mapSize; i++) {
-                for (int j = 0; j < mapSize; j++) {
-                    buffMap[i][j] = map[mapSize - 1 - j][i];
-                }
-            }
+        // чтобы с той же логикой пройти по столбцам и диагоналям в другом направлении.
+        if (!counter) {
+            char[][] buffMap = turnMap(map);
             counter = checkMap(victorySize, playerIcon, buffMap);
         }
 
-        return counter == victorySize;
+        return counter;
     }
 
-    private static int checkMap(int victorySize, char playerIcon, char[][] buffMap) {
+    private static boolean checkMap(int victorySize, char playerIcon, char[][] map) {
+        if (!checkLine(victorySize, playerIcon, map)) {
+            return checkDiagonal(victorySize, playerIcon, map);
+        }
+        return true;
+    }
+
+    private static boolean checkLine(int victorySize, char playerIcon, char[][] map) {
         int counter = 0;
 
-        //Проверка строк
         for (int i = 0; i < mapSize; i++) {
             if (counter < victorySize) {
                 counter = 0;
                 for (int j = 0; j < mapSize; j++) {
                     if (counter < victorySize) {
-                        counter = buffMap[i][j] == playerIcon ? counter + 1 : 0;
+                        counter = map[i][j] == playerIcon ? counter + 1 : 0;
+                        if (counter == victorySize) return true;
                     }
                 }
             }
         }
+        return false;
+    }
 
-        //Проверка всех диагональней
-        if (counter < victorySize) {
-            counter = 0;
-            int size = mapSize;
-            for (int i = 0; i < size; i++) {
+    private static boolean checkDiagonal(int victorySize, char playerIcon, char[][] map) {
+        int counter = 0;
+        int size = mapSize;
+
+        for (int i = 0; i < mapSize; i++) {
+            if (counter < victorySize) {
+                counter = 0;
+                for (int j = 0; j < size; j++) {
+                    counter = map[i + j][j] == playerIcon ? counter + 1 : 0;
+                    if (counter == victorySize) return true;
+                }
+
                 if (counter < victorySize) {
                     counter = 0;
-                    for (int j = 0; j < size; j++) {
-                        counter = buffMap[i + j][j] == playerIcon ? counter + 1 : 0;
-                    }
-
-                    if (counter < victorySize) {
-                        counter = 0;
-                        for (int j = 0; j < size; j++) {
-                            counter = buffMap[j][i + j] == playerIcon ? counter + 1 : 0;
-                        }
+                    for (int j = 1; j < size; j++) {
+                        counter = map[j][i + j] == playerIcon ? counter + 1 : 0;
+                        if (counter == victorySize) return true;
                     }
                 }
-                size--;
+            }
+            size--;
+        }
+        return false;
+    }
+
+    private static char[][] turnMap(char[][] map) {
+        char[][] buffMap = new char[mapSize][mapSize];
+        for (int i = 0; i < mapSize; i++) {
+            for (int j = 0; j < mapSize; j++) {
+                buffMap[i][j] = map[mapSize - 1 - j][i];
             }
         }
-        return counter;
+        return buffMap;
     }
 }
