@@ -167,7 +167,7 @@ public class Lesson4 {
 
                 if (counter < victorySize) {
                     counter = 0;
-                    for (int j = 1; j < size; j++) {
+                    for (int j = 0; j < size; j++) {
                         counter = map[j][i + j] == playerIcon ? counter + 1 : 0;
                         if (counter == victorySize) return true;
                     }
