@@ -2,9 +2,10 @@ package ru.geekbrains.homework.Lesson6;
 
 public class AnimalGames {
     public static void main(String[] args) {
-        Cat cat1 = new Cat("Muska");
-        new Cat("Puska");
-        new Cat("Fedora");
+        Plate plate = new Plate(50);
+        Cat cat1 = new Cat("Muska", 15);
+        Cat cat2 = new Cat("Puska", 20);
+        Cat cat3 = new Cat("Fedora", 20);
         Dog dog1 = new Dog("Bublik");
         new Dog("Bobik");
 
@@ -16,5 +17,18 @@ public class AnimalGames {
         dog1.swim(5);
         System.out.println(Cat.catCount);
         System.out.println(Dog.dogCount);
+
+        cat1.eat(plate);
+        cat2.eat(plate);
+        cat3.eat(plate);
+
+        cat1.isSatiety();
+        cat2.isSatiety();
+        cat3.isSatiety();
+
+        plate.addFood(20);
+        cat3.eat(plate);
+        cat3.isSatiety();
+
     }
 }

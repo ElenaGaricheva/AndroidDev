@@ -35,4 +35,8 @@ public class Animal {
             System.out.printf("%s %s %dm!\n", this.name, abilities, distance);
         } else System.out.printf("%s can't %s such a long distance!\n", this.name, abilities);
     }
+
+    public String getName() {
+        return name;
+    }
 }
