@@ -6,8 +6,7 @@ public enum ActivityType {
     RAN ("ran"),
     SWAM ("swam");
 
-    private String activityType;
-
+    private final String activityType;
 
     ActivityType(String activityType) {
         this.activityType = activityType;
