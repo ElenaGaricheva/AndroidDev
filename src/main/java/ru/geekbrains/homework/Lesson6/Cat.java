@@ -4,9 +4,11 @@ public class Cat extends Animal {
     public static int catCount = 0;
     private int appetite;
     private boolean satiety;
+    private static final int maxRunDistance = 200;
+    private static final int maxSwimDistance = 0;
 
     public Cat(String name, int appetite) {
-        super(name, 200, 0);
+        super(name, maxRunDistance, maxSwimDistance);
         this.appetite = appetite;
         satiety = false;
         catCount++;
