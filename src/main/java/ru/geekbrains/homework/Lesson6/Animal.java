@@ -11,11 +11,11 @@ public class Animal {
         this.maxSwimDistance = maxSwimDistance;
     }
 
-    void run(int distance) {
-        checkAbilities(distance, this.maxRunDistance, "run");
+    public void run(int distance) {
+        checkAbilities(distance, this.maxRunDistance, ActivityType.RUN.activityType);
     }
 
-    void swim(int distance) {
+    public void swim(int distance) {
         checkAbilities(distance, this.maxSwimDistance, "swim");
     }
 
