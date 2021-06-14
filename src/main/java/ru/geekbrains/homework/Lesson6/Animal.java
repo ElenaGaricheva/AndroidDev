@@ -1,5 +1,7 @@
 package ru.geekbrains.homework.Lesson6;
 
+import static ru.geekbrains.homework.Lesson6.ActivityType.*;
+
 public class Animal {
     private final String name;
     protected int maxRunDistance;
@@ -12,11 +14,11 @@ public class Animal {
     }
 
     public void run(int distance) {
-        checkAbilities(distance, this.maxRunDistance, ActivityType.RUN.activityType);
+        checkAbilities(distance, this.maxRunDistance, RUN.getType());
     }
 
     public void swim(int distance) {
-        checkAbilities(distance, this.maxSwimDistance, "swim");
+        checkAbilities(distance, this.maxSwimDistance, SWIM.getType());
     }
 
     private boolean validate(int distance) {
@@ -31,7 +33,7 @@ public class Animal {
         if (maxDistance == 0) {
             System.out.printf("%s can't %s at all!\n", this.name, abilities);
         } else if (distance <= maxDistance) {
-            abilities = abilities.equals("run") ? "ran" : "swam";
+            abilities = abilities.equals(RUN.getType()) ? RAN.getType() : SWAM.getType();
             System.out.printf("%s %s %dm!\n", this.name, abilities, distance);
         } else System.out.printf("%s can't %s such a long distance!\n", this.name, abilities);
     }
