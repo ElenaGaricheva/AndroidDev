@@ -1,5 +1,5 @@
 package ru.geekbrains.homework.Lesson8;
 
-public interface Run {
+public interface Run extends Movable {
     boolean run(int length);
 }

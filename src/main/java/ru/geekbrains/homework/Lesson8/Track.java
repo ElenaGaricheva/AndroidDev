@@ -1,17 +1,13 @@
 package ru.geekbrains.homework.Lesson8;
 
-public class Track {
+public class Track extends Barrier {
     private final int trackLength;
 
     public Track(int trackLength) {
         this.trackLength = trackLength;
     }
 
-    public void run(Run participant){
-        participant.run(trackLength);
-    }
-
-    public int getTrackLength() {
-        return trackLength;
+    boolean checkBarrier(Movable participant) {
+        return participant.run(trackLength);
     }
 }

@@ -18,5 +18,4 @@ public class Human implements Run, Jump{
     public boolean run(int trackLength) {
         return maxRunDistance >= trackLength;
     }
-
 }

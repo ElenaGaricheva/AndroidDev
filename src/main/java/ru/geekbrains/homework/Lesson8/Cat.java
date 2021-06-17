@@ -1,6 +1,6 @@
 package ru.geekbrains.homework.Lesson8;
 
-public class Cat implements Run, Jump {
+public class Cat implements Movable {
     private final int maxRunDistance;
     private final int maxJumpHeight;
 

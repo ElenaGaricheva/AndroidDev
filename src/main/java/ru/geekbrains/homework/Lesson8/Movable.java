@@ -1,5 +1,6 @@
 package ru.geekbrains.homework.Lesson8;
 
-public interface Jump extends Movable {
+interface Movable {
+    boolean run(int length);
     boolean jump(int height);
 }
