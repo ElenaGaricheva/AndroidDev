@@ -17,22 +17,20 @@ public class Lesson9 {
             throw new MyArraySizeException(
                     "Размер массива не соответствует ожидаемому");
         }
-
         arrFormat(stringsArr);
     }
 
 
     private static int arrFormat(String[][] stringsArr) throws MyArrayDataException {
         int arrElementSum = 0;
-        for (String[] stringArr : stringsArr) {
-            for (String element : stringArr) {
+        for (int i = 0; i < stringsArr.length; i++) {
+            for (int j = 0; j < stringsArr.length; j++)
                 try {
-                    arrElementSum += Integer.parseInt(element);
+                    arrElementSum += Integer.parseInt(stringsArr[i][j]);
                 } catch (NumberFormatException e) {
-                    throw new MyArrayDataException("Не удалось преобразовать элемент массива" + e.getMessage());
+                    throw new MyArrayDataException(String.format("Не удалось преобразовать элемент массива %s " +
+                            "в ячейке [%d, %d]", stringsArr[i][j], i, j));
                 }
-
-            }
         }
         return arrElementSum;
     }
