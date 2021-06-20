@@ -4,7 +4,7 @@ public class Lesson9 {
     public static void main(String[] args) throws MyArraySizeException, MyArrayDataException {
         String[][] stringsArr = {
                 {"1", "2", "3", "4"},
-                {"A", "_", "7", "8"},
+                {"A", "7", "7", "8"},
                 {"9", "2", "3", "4"},
                 {"1", "2", "3", "4"}
         };
@@ -17,7 +17,7 @@ public class Lesson9 {
             throw new MyArraySizeException(
                     "Размер массива не соответствует ожидаемому");
         }
-        arrFormat(stringsArr);
+        System.out.println(arrFormat(stringsArr));
     }
 
 
