@@ -10,8 +10,14 @@ public class Store {
 
         appleBox.addFruit(apple);
         orangeBox.addFruit(orange);
-        appleBox.addFruit(orange);
+        orangeBox.addFruit(orange);
 
         System.out.println(appleBox.getWeight());
+        System.out.println(orangeBox.getWeight());
+
+        System.out.println(appleBox.compare(orangeBox));
+        orangeBox.addFruitFromOtherBox(orangeBox);
+        orangeBox.addFruitFromOtherBox(appleBox);
+
     }
 }
