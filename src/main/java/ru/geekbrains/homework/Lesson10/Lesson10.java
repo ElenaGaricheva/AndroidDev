@@ -1,4 +1,4 @@
-package ru.geekbrains.homework;
+package ru.geekbrains.homework.Lesson10;
 
 import java.util.ArrayList;
 import java.util.Collections;
