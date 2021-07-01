@@ -2,7 +2,7 @@ package ru.geekbrains.homework.Lesson6;
 
 public class Cat extends Animal {
     public static int catCount = 0;
-    private int appetite;
+    private final int appetite;
     private boolean satiety;
     private static final int maxRunDistance = 200;
     private static final int maxSwimDistance = 0;
